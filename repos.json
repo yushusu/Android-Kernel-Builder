@@ -1,31 +1,28 @@
-[  {
-    "kernelSource": {
-      "name": "miku-KernelSU",
-      "repo": "https://github.com/PhamtomK12/kernel_xiaomi_odin",
-      "branch": "TDA",
-      "device": "odin"
+{
+  "kernelSource": {
+    "name": "android-common-kernel-goldfish",
+    "repo": "https://android.googlesource.com/kernel/manifest",
+    "branch": "common-android14-6.1",
+    "device": "generic_arm64"
+  },
+  "withKernelSU": false,
+  "toolchains": [
+    {
+      "repo": "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86",
+      "branch": "master",
+      "name": "aosp-clang"
     },
-    "withKernelSU": true,
-    "toolchains": [
-      {
-        "repo": "https://android.googlesource.com/platform/prebuilts/gas/linux-x86",
-        "branch": "master",
-        "name": "gas"
-      },
-      {
-        "repo": "https://gitlab.com/ThankYouMario/android_prebuilts_clang-standalone/",
-        "branch": "11",
-        "name": "clang"
-      }
-    ],
-    "params": {
-      "ARCH": "arm64",
-      "CROSS_COMPILE": "aarch64-linux-gnu-",
-      "CROSS_COMPILE_ARM32": "arm-linux-gnueabi-",
-      "CROSS_COMPILE_COMPAT": "arm-linux-gnueabi-",
-      "CLANG_TRIPLE": "aarch64-linux-gnu-",
-      "AR": "",
-      "CC": "clang"
+    {
+      "repo": "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9",
+      "branch": "master",
+      "name": "aosp-gcc"
     }
+  ],
+  "params": {
+    "ARCH": "arm64",
+    "CROSS_COMPILE": "aarch64-linux-android-",
+    "CLANG_TRIPLE": "aarch64-linux-gnu-",
+    "CC": "clang",
+    "KCFLAGS": "-mno-android"
   }
-]
+}
