@@ -1,28 +1,30 @@
-{
-  "kernelSource": {
-    "name": "android-common-kernel-goldfish",
-    "repo": "https://android.googlesource.com/kernel/manifest",
-    "branch": "common-android14-6.1",
-    "device": "generic_arm64"
-  },
-  "withKernelSU": false,
-  "toolchains": [
-    {
-      "repo": "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86",
-      "branch": "master",
-      "name": "aosp-clang"
+[
+  {
+    "kernelSource": {
+      "name": "goldfish",
+      "repo": "https://android.googlesource.com/kernel/goldfish",
+      "branch": "common-android14-6.1",
+      "device": "goldfish_arm64"
     },
-    {
-      "repo": "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9",
-      "branch": "master",
-      "name": "aosp-gcc"
+    "withKernelSU": false,
+    "toolchains": [
+      {
+        "repo": "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86",
+        "branch": "master",
+        "name": "aosp-clang"
+      },
+      {
+        "repo": "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9",
+        "branch": "master",
+        "name": "aosp-gcc"
+      }
+    ],
+    "params": {
+      "ARCH": "arm64",
+      "CROSS_COMPILE": "aarch64-linux-android-",
+      "CLANG_TRIPLE": "aarch64-linux-gnu-",
+      "CC": "clang",
+      "KCFLAGS": "-mno-android"
     }
-  ],
-  "params": {
-    "ARCH": "arm64",
-    "CROSS_COMPILE": "aarch64-linux-android-",
-    "CLANG_TRIPLE": "aarch64-linux-gnu-",
-    "CC": "clang",
-    "KCFLAGS": "-mno-android"
   }
-}
+]
